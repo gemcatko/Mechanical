@@ -1,16 +1,21 @@
 """Some documentation."""
 import argparse
+import sys
 
 
-def reverse_and_upper():
+def reverse_and_upper(string):
     """Return uppercased and reversed string."""
-    ap = argparse.ArgumentParser()
-    ap.add_argument("-s", "--string", required=True, help="Please enter, "
-                    "string you would like to uppercase andreverse ")
-    args = vars(ap.parse_args())
-    string = args["string"]
     return ''.join(reversed(string.upper()))
 
 
+def parse_args(args):
+    """So I can nicly Pytesting."""
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-s", "--string", required=True, help="Please enter, "
+                    "string you would like to uppercase andreverse ")
+    return ap.parse_args(args)
+
+
 if __name__ == "__main__":
-    print(reverse_and_upper())
+    args = parse_args(sys.argv[1:])
+    print(reverse_and_upper(args.string))
