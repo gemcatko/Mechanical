@@ -10,12 +10,13 @@ def reverse_and_upper(string):
 
 def parse_args(args):
     """So I can nicly Pytesting."""
-    ap = argparse.ArgumentParser()
-    ap.add_argument("-s", "--string", required=True, help="Please enter, "
-                    "string you would like to uppercase andreverse ")
-    return ap.parse_args(args)
+    ap_reworked = argparse.ArgumentParser()
+    ap_reworked.add_argument("-s", "--string", required=True, help="Please "
+                             "enter, string you would like to uppercase"
+                             " andreverse ")
+    return ap_reworked.parse_args(args)
 
 
 if __name__ == "__main__":
-    args = parse_args(sys.argv[1:])
-    print(reverse_and_upper(args.string))
+    ARGS_MAIN = parse_args(sys.argv[1:])
+    print(reverse_and_upper(ARGS_MAIN.string))
